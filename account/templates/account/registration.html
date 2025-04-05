@@ -63,6 +63,13 @@
                             </div>
                         {% endfor %}
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Captcha</label>
+                        {{ form.captcha }}
+                        {% for error in form.captcha.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
 
                     <button type="submit" class="btn btn-block w-100 mt-3">Register</button>
                 </form>

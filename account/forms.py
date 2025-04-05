@@ -1,8 +1,11 @@
 from django import forms
 from account.models import User
 from django.contrib.auth.forms import PasswordChangeForm
+from captcha.fields import CaptchaField
+
 
 class RegistertionForm(forms.ModelForm):
+    captcha = CaptchaField()
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     confirm_password = forms.CharField(label='Confirm password (again)', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class':'form-control'}))
