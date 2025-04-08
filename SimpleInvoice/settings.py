@@ -157,7 +157,7 @@ DEFAULT_FROM_EMAIL =os.getenv("default_from_email")
 # email_host_password=pZHqX0xKyN9kFfrd
 # default_from_email=adarsh@ml-test.shop
 
-SITE_DOMAIN = 'http://127.0.0.1:8000'
+SITE_DOMAIN = 'https://ml-test.shop'
 SITE_NAME = 'Auth System'
 
 
