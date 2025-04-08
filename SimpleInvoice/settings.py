@@ -5,7 +5,11 @@ from pathlib import Path
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv()
+
+
+
+env_path = Path(__file__).resolve().parent / '.env'
+load_dotenv(dotenv_path=env_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -127,8 +131,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL = '/static/'
@@ -141,20 +143,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Where static files will b
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SITE_DOMAIN = 'http://127.0.0.1:8000/'
-
-SITE_NAME = "Auth System"
-
-AUTH_USER_MODEL = 'account.User' 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST =os.getenv("email_host")
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER =os.getenv("email_host_user")
+EMAIL_HOST_PASSWORD=os.getenv("email_host_password")  # double check it
+DEFAULT_FROM_EMAIL =os.getenv("default_from_email")
 
-EMAIL_HOST = 'live.smtp.mailtrap.io'
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = '465'
-EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL')
-EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL')
+# email_host=smtp-relay.brevo.com
+# email_host_user=89cb62002@smtp-brevo.com
+# email_host_password=pZHqX0xKyN9kFfrd
+# default_from_email=adarsh@ml-test.shop
+
+SITE_DOMAIN = 'http://127.0.0.1:8000'
+SITE_NAME = 'Auth System'
+
+
 
 
 TIME_ZONE = 'Asia/Kolkata' 
@@ -165,3 +171,5 @@ USE_TZ = True
 LOGOUT_REDIRECT_URL = 'login'
 
 LOGIN_URL = 'login'
+
+AUTH_USER_MODEL = 'account.User'
